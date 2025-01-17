@@ -1,5 +1,6 @@
 ---
-title: "Survey Quality Predictor: SQP"
+title: "Survey Quality Predictor"
+subtitle: "A survey quality prediction system for continuous questions used in survey research"
 author:
   - name: "Lukas Birkenmaier"
   - name: "Lydia Repke"
@@ -50,113 +51,33 @@ SQP has evolved into a comprehensive tool that supports survey researchers in de
 
 The decisions made in designing survey questions significantly impact respondents’ answer behavior, as variations in question formulation, response scales, and contextual features influence how individuals interpret and respond to survey items. For instance, @saris2022 illustrate this with an example of measuring trust in the economy. They compare the effects of three different response scale designs on the question: 
 
+::: {.callout-tip}
+## Examples
+
+#### (Q1) On the whole, how satisfied are you with the present state of the economy in Britain?
+
+##### **4-point bipolar scale:**
+
+1. Very satisfied  
+2. Satisfied  
+3. Dissatisfied  
+4. Very dissatisfied  
+
+
+##### **4-point unipolar scale:**
+
+1. Not at all satisfied  
+2. Satisfied  
+3. Rather satisfied  
+4. Very satisfied  
+
+##### **Numeric scale (0–10):** 
+| Very dissatisfied |         |         |        |      |        |       |        |        |         | Very satisfied |
+|--------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|----------------|
+|         0         |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |        10       |
+
 :::
-> #### (Q1) On the whole, how satisfied are you with the present state of the economy in Britain?
->
-> <p style="margin-top: 20px; margin-bottom: 10px;">
->
-> <strong>4-point bipolar scale:</strong>
->
-> </p>
->
-> <ol style="margin-top: 0px; margin-bottom: 10px; padding-left: 40px; list-style-position: outside;">
->
-> <li style="padding-left: 10px;">
->
-> Very satisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Satisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Dissatisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Very dissatisfied
->
-> </li>
->
-> </ol>
->
-> <p style="margin-top: 20px; margin-bottom: 10px;">
->
-> <strong>4-point unipolar scale:</strong>
->
-> </p>
->
-> <ol style="margin-top: 0px; margin-bottom: 10px; padding-left: 40px; list-style-position: outside;">
->
-> <li style="padding-left: 10px;">
->
-> Not at all satisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Satisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Rather satisfied
->
-> </li>
->
-> <li style="padding-left: 10px;">
->
-> Very satisfied
->
-> </li>
->
-> </ol>
->
-> <p style="margin-top: 20px; margin-bottom: 10px;">
->
-> <strong>Numeric Scale (0–10):</strong>
->
-> </p>
->
-> ```{=html}
-> <table style="border-collapse: collapse; width: 100%; text-align: center;">
->   <tr>
->     <td style="width: 10%;">Very dissatisfied</td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;"></td>
->     <td style="width: 10%;">Very satisfied</td>
->   </tr>
->   <tr>
->     <td>0</td>
->     <td>1</td>
->     <td>2</td>
->     <td>3</td>
->     <td>4</td>
->     <td>5</td>
->     <td>6</td>
->     <td>7</td>
->     <td>8</td>
->     <td>9</td>
->     <td>10</td>
->   </tr>
-> </table>
-> ```
+
 
 :::::: {style="text-align: justify;"}
 
@@ -226,14 +147,12 @@ For a detailed explanation of the coding process and additional resources, see t
 
 ## Practical Application of SQP
 
-<p>To illustrate how measuring the same construct can vary depending on the type of question and the answer scale used—and how these variations can lead to different quality prediction scores—we examine a question on economic satisfaction from Round 4 of the European Social Survey (ESS). You can <a href="https://sqp.gesis.org/user/database?a=1&si=4&ow=&la=&co=78&q=&chv=&t=Political+satisfaction&fmcf=&fccf=&_csrf=635a1b56-6247-4b74-aae7-abfd5e3d7c0e" target="_blank" style="text-decoration: underline;">click here</a> to access the questions in the example below.</p>
+To illustrate how measuring the same construct can vary depending on the type of question and the answer scale used—and how these variations can lead to different quality prediction scores—we examine a question on economic satisfaction from Round 4 of the European Social Survey (ESS). You can [click here](https://sqp.gesis.org/user/database?a=1&si=4&ow=&la=&co=78&q=&chv=&t=Political+satisfaction&fmcf=&fccf=&_csrf=635a1b56-6247-4b74-aae7-abfd5e3d7c0e) to access the questions in the example below.
 
 
 ![](img/ukeconomy.png){style="margin-top: 20px; margin-bottom: 10px;"} 
 
 - The first version “HS7 / testc7 / Political satisfaction: country's economy” measures the construct using a numeric rating scale that ranges from “0 - Dissatisfied” to “10 - Satisfied.” The question asks, “On the whole, how satisfied are you with the present state of the economy in (Britain/the UK)?” This scale captures various degrees of satisfaction along a continuum, providing respondents with a range of options to express their attitudes. 
-
-
 
 - The second version “HS19 / testc19 / Political satisfaction: country's economy” measures the same construct using a 5-point Likert scale with fully labeled response options. The question states, “To what extent do you agree or disagree with the following statement: On the whole, I am satisfied with the present state of the economy in (Britain/the UK).” Here, response options range from “1 - Agree strongly” to “5 - Disagree strongly,” categorizing responses into distinct levels of agreement or disagreement. 
 
@@ -247,14 +166,17 @@ SQP generated quality predictions for both types of questions, highlighting the 
 
 :::{.callout-note collapse="true" title="A Step-by-Step Guide to Hands-on Application"}
 
-![](img/pen.png){style="margin-top: 20px; margin-bottom: 20px;"}
 **Step 1:** To begin creating your own quality prediction, locate the question in the survey item list. Simply click the pen icon next to the relevant question to open the coding interface. This will allow you to code the question’s characteristics and predict its measurement quality.
 
-![](img/coding.png){style="margin-top: 20px; margin-bottom: 20px;"}
+![](img/pen.png){style="margin-top: 20px; margin-bottom: 20px;"}
+
 **Step 2:** Once you’ve accessed the coding interface, you will start by selecting the appropriate characteristics for the question. For example, since the question about satisfaction with the economy pertains to national politics, select “National politics” from the list of options. A helpful pink box appears below the coding options, providing detailed explanations for each characteristic. Use this guidance to ensure you understand the options and make accurate selections. After completing this step, click “Next” to proceed to the next characteristic.
 
-![](img/progress.png){style="margin-top: 20px; margin-bottom: 20px;"}
+![](img/coding.png){style="margin-top: 20px; margin-bottom: 20px;"}
+
 **Step 3:** Repeat the process for each characteristic of the survey item. As you progress, the progress bar at the top of the screen will indicate how much of the coding is complete. On the right-hand side, your previous answers are displayed, enabling you to review and make corrections if necessary. If you realize an error or need to adjust a response, simply go back to the corresponding step and update your selection. Continue coding until the progress bar is fully completed, ensuring that all characteristics have been coded accurately.
+
+![](img/progress.png){style="margin-top: 20px; margin-bottom: 20px;"}
 
 **Step 4:** By following these steps, you can generate a reliable quality prediction for the survey item, gaining valuable insights into its measurement properties.
 
