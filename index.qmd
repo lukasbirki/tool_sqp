@@ -1,0 +1,272 @@
+---
+title: "Survey Quality Predictor: SQP"
+author:
+  - name: "Lukas Birkenmaier"
+  - name: "Lydia Repke"
+  - name: "Cem Eryar"
+image: img/logo_sqp.png 
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+format:
+  html: default
+  pdf: default
+bibliography: references/references.bib
+csl: references/apa.csl
+editor: 
+  markdown: 
+    wrap: sentence
+collapse-callout:
+  all: true
+---
+
+# Introduction
+::: {style="text-align: justify;"}
+
+The Survey Quality Predictor (SQP) 3.0 is an open-access system for predicting the reliability, validity, and quality of survey questions for continuous latent variables based on their formal and linguistic characteristics (such as the properties of the answer scale and the administration mode). SQP is grounded in decades of methodological research and enables survey designers and researchers to evaluate and enhance the quality of their measurement instruments. By systematically linking the characteristics of survey items to their measurement quality, SQP provides a practical framework for improving data quality in survey-based research [@felderer2024]. 
+
+Relying on SQP’s prediction power and its day-by-day extending database, researchers can effectively utilize its features in at least three different ways [@felderer2024]: 
+
+-   During the questionnaire development process, researchers can consult the database, predict the qualities of different item versions, and make informed comparisons. 
+
+-   SQP enables researchers to compare different language versions of the same item by analyzing the coded characteristics. This analysis helps identify potential methodological differences between the source items and their translations, thus supporting quality control of translations in cross-cultural surveys. 
+
+-   SQP’s quality predictions can be used in substantial analyses to correct for measurement errors of items capturing subjective concepts [@andrews1984; @saris2016; @saris2022]. 
+
+In this tutorial, we will explain the conceptual framework of SQP, demonstrate its function through an example, and conclude with a discussion on its benefits, limitations, and potential for future development. Overall, this tutorial aims to ensure that survey designers and researchers can harness SQP to create better surveys, mitigate potential biases, and enhance the overall quality of their research.
+
+
+:::
+# SQP
+
+::: {style="text-align: justify;"}
+The Survey Quality Predictor (SQP) is a software tool developed to predict the measurement quality of survey items for continuous latent variables. It operates by analyzing survey items’ formal and linguistic characteristics [@gesis2024]. SQP’s development is rooted in decades of methodological research, beginning in the 1980s when Willem Saris and his colleagues conducted a series of multitrait-multimethod (MTMM) experiments. These experiments aimed to quantify the reliability and validity of survey items and disentangle random and systematic errors, ultimately improving the quality of survey instruments [@saris2014]. The insights from these early experiments laid the foundation for SQP’s predictive capabilities.
+
+The first version of SQP was released in 2001 [@saris2001]. This version operationalized the findings from MTMM research into a practical tool that allowed users to code survey items and predict their reliability and validity. While groundbreaking, SQP 1.0 had limitations, such as a relatively small database on which the prediction was based and a lack of advanced features [@gesis2024]. A decade later, SQP 2.0 introduced significant advancements, including an expanded database and a new prediction algorithm. In 2015, SQP received a usability makeover, improving the user experience as version 2.1 [@saris2022]. The release of SQP 3.0 in 2022 marked a major milestone in survey research methodology. This version included thousands of survey items coded in 28 languages for 33 countries, making it particularly valuable for cross-cultural and multilingual studies like the European Social Survey (ESS). Its updated prediction algorithm accounted for interactions between item characteristics, offering more accurate reliability and validity estimates. SQP 3.0 also introduced new features that improved and enhanced the user experience [@gesis2024].
+
+SQP has evolved into a comprehensive tool that supports survey researchers in designing high-quality questionnaires, ensuring cross-cultural comparability, and improving the quality of survey questions. Its integration of predictive modeling, and user-friendly features positions SQP as an indispensable resource in modern survey research.
+:::
+
+## The Impact of Survey Question Design and the Role of SQP
+::: {style="text-align: justify;"}
+
+The decisions made in designing survey questions significantly impact respondents’ answer behavior, as variations in question formulation, response scales, and contextual features influence how individuals interpret and respond to survey items. For instance, @saris2022 illustrate this with an example of measuring trust in the economy. They compare the effects of three different response scale designs on the question: 
+
+:::
+> #### (Q1) On the whole, how satisfied are you with the present state of the economy in Britain?
+>
+> <p style="margin-top: 20px; margin-bottom: 10px;">
+>
+> <strong>4-point bipolar scale:</strong>
+>
+> </p>
+>
+> <ol style="margin-top: 0px; margin-bottom: 10px; padding-left: 40px; list-style-position: outside;">
+>
+> <li style="padding-left: 10px;">
+>
+> Very satisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Satisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Dissatisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Very dissatisfied
+>
+> </li>
+>
+> </ol>
+>
+> <p style="margin-top: 20px; margin-bottom: 10px;">
+>
+> <strong>4-point unipolar scale:</strong>
+>
+> </p>
+>
+> <ol style="margin-top: 0px; margin-bottom: 10px; padding-left: 40px; list-style-position: outside;">
+>
+> <li style="padding-left: 10px;">
+>
+> Not at all satisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Satisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Rather satisfied
+>
+> </li>
+>
+> <li style="padding-left: 10px;">
+>
+> Very satisfied
+>
+> </li>
+>
+> </ol>
+>
+> <p style="margin-top: 20px; margin-bottom: 10px;">
+>
+> <strong>Numeric Scale (0–10):</strong>
+>
+> </p>
+>
+> ```{=html}
+> <table style="border-collapse: collapse; width: 100%; text-align: center;">
+>   <tr>
+>     <td style="width: 10%;">Very dissatisfied</td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;"></td>
+>     <td style="width: 10%;">Very satisfied</td>
+>   </tr>
+>   <tr>
+>     <td>0</td>
+>     <td>1</td>
+>     <td>2</td>
+>     <td>3</td>
+>     <td>4</td>
+>     <td>5</td>
+>     <td>6</td>
+>     <td>7</td>
+>     <td>8</td>
+>     <td>9</td>
+>     <td>10</td>
+>   </tr>
+> </table>
+> ```
+
+:::::: {style="text-align: justify;"}
+
+The results revealed significant differences in response distributions and correlations with related variables based on the scale used. For instance, numeric scales tended to produce higher correlations with other trust measures, whereas bipolar and unipolar scales generated distinct response patterns. These variations stem from the way survey questions influence respondents’ cognitive processing. 
+
+Bipolar scales emphasize contrasts between extremes, potentially encouraging more polarized responses, while unipolar scales direct attention to a single dimension, which may reduce polarization but introduce other biases. In contrast, numeric scales convey a sense of precision and neutrality yet require respondents to map their attitudes onto a numeric continuum. These subtle but impactful differences highlight the critical role of thoughtful survey design, especially for subjective constructs like trust or satisfaction [@saris2022]. 
+
+Therefore, SQP is essential for ensuring high-quality survey research, as it systematically addresses the impact of question design on measurement outcomes. By predicting the reliability and validity of survey questions, SQP helps researchers identify potential biases and unintended effects introduced by variations in scales, wording, or structure. For example, as demonstrated by differences between numeric, bipolar, and unipolar scales, minor design changes can profoundly influence respondents’ cognitive processing and, consequently, the data collected. This is particularly critical for subjective measures like trust, satisfaction, or attitudes, where nuanced design decisions can significantly affect data quality and the validity of subsequent analyses.
+
+## Introduction to the Coding Process in SQP
+
+The <a href="https://sqp.gesis.org/" target="_blank">SQP Website</a> provides researchers with a comprehensive tool to evaluate and enhance the quality of survey questions systematically. At the heart of this process lies the coding of survey items, where specific characteristics of questions are analyzed to generate predictions about their reliability and validity. The SQP website offers an intuitive interface that facilitates both the coding process and access to its extensive database of survey items. 
+
+To use the tool’s full functionality, researchers must [register](https://sqp.gesis.org/signin) and create an account on the platform. Once logged in, they can interact with a searchable database containing a vast collection of survey items from various studies, languages, and countries, add new survey questions, and code them to get quality predictions. 
+
+![](img/landing_page.png){style="margin-top: 20px; margin-bottom: 10px;"}
+
+The database allows researchers to explore existing items, apply filters, and use advanced search options to focus on specific topics or coding characteristics. For instance, users interested in survey items coded for “centrality” or measuring concepts like “political efficacy” can refine their search accordingly. 
+
+
+As mentioned above, the platform further enables researchers to contribute to the database with new survey items by entering key details, such as the question text, response options, and metadata about the study. After adding an item, users proceed to the coding stage, where they thoroughly analyze the survey question’s characteristics. This process involves evaluating features like the response scale, linguistic complexity, and the formulation of the request for an answer. 
+
+
+:::{.callout-note collapse='true'}
+## List of Characteristics
+
+| **Variable Name** | **Description** |
+|:---------------|:-------------------------------------------------------|
+| **Domain** | The topic of the assertion that one wants to measure using this survey item, determined by the research goal. |
+| **Concept** | The concept one wants to measure, classified as one of the basic concepts distinguished in SQP. |
+| **Social desirability** | Relates to the domain choice; identifies sensitive or delicate items that can bias responses. |
+| **Centrality** | Measures the familiarity of respondents with the topic, linked to the domain choice. |
+| **Reference period** | Refers to the time period mentioned in the request, e.g., present, past, or future. |
+| **Formulation of the request** | The basic formulation of the request, e.g., direct, indirect, or omitted in item batteries. |
+| **WH word used in the request** | Requests starting with words like who, what, when, where, how, etc., or their translations. |
+| **Request for an answer type** | Requests may be formulated as interrogative, imperative, or declarative. |
+| **Use of gradation** | Identifies requests where responses can be ordered, e.g., low to high or vice versa. |
+| **Balance of the request** | Determines whether requests are balanced (mentioning both poles) or unbalanced. |
+| **Presence of encouragement** | Encourages responses, e.g., 'Please, tell me...' or 'We would like to ask you...' |
+| **Emphasis on subjective opinion** | Focuses on subjective opinion, e.g., 'What do you think about...?' or 'According to you...' |
+| **Information regarding others' opinions** | Includes information on others' opinions, e.g., 'Some people are against nuclear energy while others support it.' |
+| **Use of stimulus or statement** | Survey items with a stimulus (noun/words) or statements (complete sentences). |
+| **Absolute or comparative judgment** | Determines whether respondents provide absolute or comparative judgments. |
+| **Response scale: basic choice** | The type of response options, e.g., two-category, more-step procedures, open-ended, etc. |
+| **Response scale characteristics** | Characteristics like number of categories, maximum values, labels, and scale range. |
+| **Don’t know option** | Indicates whether a 'Don’t know' option is present. |
+| **Interviewer instruction** | Instructions provided to interviewers, e.g., about showcards or visual aids. |
+| **Respondent instruction** | Instructions provided to respondents, usually in imperative or polite forms. |
+| **Extra information or definition** | Additional information or definitions provided for clarity, though not strictly necessary. |
+| **Knowledge provided** | Defines whether definitions, explanations, or both are provided. |
+| **Introduction available** | Introduces the survey topic or related questions, often at the beginning. |
+| **Linguistic characteristics** | Covers linguistic features of introduction, request, and answer scale, e.g., number of sentences, words, or abstract nouns. |
+| **Showcard used** | Indicates whether a showcard is used for response options or additional assistance. |
+| **Showcard characteristics** | Details characteristics of showcards, e.g., scale orientation, labels, or numbers. |
+| **Computer-assisted** | Indicates whether the mode of data collection is computer-assisted. |
+| **Interviewer** | Specifies whether the mode is interviewer-administered or self-administered. |
+| **Visual or oral presentation** | States whether the questionnaire is visually presented or orally read to respondents. |
+| **Position** | Indicates the position of the survey item within the questionnaire. |
+:::
+
+Although coding between 30 and 60 characteristics may seem daunting initially, the platform provides clear instructions and contextual help to guide users through the process. 
+
+Once the coding is complete, SQP generates a prediction of the item’s measurement quality, including its reliability, validity, and potential method effects.  Furthermore, the platform includes the function to compare codings across different survey items or variations of the same item, highlighting how design choices can influence measurement quality. 
+SQP also supports transparency and replicability by enabling users to document their own survey questions and coding decisions. These features are particularly beneficial for longitudinal or comparative research, where consistent question design is critical. 
+
+For a detailed explanation of the coding process and additional resources, see the full SQP guideline here: [SQP Manual](https://sqp.gesis.org/static/files/UserManualSQP-3-Version-1.pdf).
+
+## Practical Application of SQP
+
+<p>To illustrate how measuring the same construct can vary depending on the type of question and the answer scale used—and how these variations can lead to different quality prediction scores—we examine a question on economic satisfaction from Round 4 of the European Social Survey (ESS). You can <a href="https://sqp.gesis.org/user/database?a=1&si=4&ow=&la=&co=78&q=&chv=&t=Political+satisfaction&fmcf=&fccf=&_csrf=635a1b56-6247-4b74-aae7-abfd5e3d7c0e" target="_blank" style="text-decoration: underline;">click here</a> to access the questions in the example below.</p>
+
+
+![](img/ukeconomy.png){style="margin-top: 20px; margin-bottom: 10px;"} 
+
+- The first version “HS7 / testc7 / Political satisfaction: country's economy” measures the construct using a numeric rating scale that ranges from “0 - Dissatisfied” to “10 - Satisfied.” The question asks, “On the whole, how satisfied are you with the present state of the economy in (Britain/the UK)?” This scale captures various degrees of satisfaction along a continuum, providing respondents with a range of options to express their attitudes. 
+
+
+
+- The second version “HS19 / testc19 / Political satisfaction: country's economy” measures the same construct using a 5-point Likert scale with fully labeled response options. The question states, “To what extent do you agree or disagree with the following statement: On the whole, I am satisfied with the present state of the economy in (Britain/the UK).” Here, response options range from “1 - Agree strongly” to “5 - Disagree strongly,” categorizing responses into distinct levels of agreement or disagreement. 
+
+![](img/domain.png){style="margin-top: 20px; margin-bottom: 10px;"}
+Using SQP, both survey items were coded to capture their design characteristics, revealing notable differences. Shared attributes included the domain, classified as “National Politics,” and the concept of “Feeling,” specifically focusing on satisfaction with the economy. However, variations emerged in other areas. The numeric scale question was coded as using a symmetric, theoretically bipolar scale with partially labeled categories, emphasizing both extremes and intermediate values. In contrast, the Likert scale question was coded as having fully labeled categories, a balanced structure, and an indirect request format. Additional differences included the presence of encouragement to respond in the Likert scale version, which was absent in the numeric scale question. These distinctions, highlighted in the coding interface, reflect design nuances that can influence respondents’ interpretations and responses. 
+
+![](img/rating.png){style="margin-top: 20px; margin-bottom: 10px;"} 
+SQP generated quality predictions for both types of questions, highlighting the impact of various design choices. The numeric rating scale question achieved a reliability score of *0.811* and a validity score of *0.829*, resulting in an overall quality score of *0.673*. In contrast, the 5-point Likert scale question received a reliability score of *0.667* and a validity score of *0.826*, yielding an overall quality score of *0.826*. These results emphasize that the Likert scale question, despite its lower reliability, benefits from higher validity, which contributes to its superior overall quality score. The findings illustrate the importance of aligning question design with research objectives to optimize data quality. 
+
+
+
+:::{.callout-note collapse="true" title="A Step-by-Step Guide to Hands-on Application"}
+
+![](img/pen.png){style="margin-top: 20px; margin-bottom: 20px;"}
+**Step 1:** To begin creating your own quality prediction, locate the question in the survey item list. Simply click the pen icon next to the relevant question to open the coding interface. This will allow you to code the question’s characteristics and predict its measurement quality.
+
+![](img/coding.png){style="margin-top: 20px; margin-bottom: 20px;"}
+**Step 2:** Once you’ve accessed the coding interface, you will start by selecting the appropriate characteristics for the question. For example, since the question about satisfaction with the economy pertains to national politics, select “National politics” from the list of options. A helpful pink box appears below the coding options, providing detailed explanations for each characteristic. Use this guidance to ensure you understand the options and make accurate selections. After completing this step, click “Next” to proceed to the next characteristic.
+
+![](img/progress.png){style="margin-top: 20px; margin-bottom: 20px;"}
+**Step 3:** Repeat the process for each characteristic of the survey item. As you progress, the progress bar at the top of the screen will indicate how much of the coding is complete. On the right-hand side, your previous answers are displayed, enabling you to review and make corrections if necessary. If you realize an error or need to adjust a response, simply go back to the corresponding step and update your selection. Continue coding until the progress bar is fully completed, ensuring that all characteristics have been coded accurately.
+
+**Step 4:** By following these steps, you can generate a reliable quality prediction for the survey item, gaining valuable insights into its measurement properties.
+
+:::
+
+# Conclusion
+
+The Survey Quality Predictor (SQP) is a powerful tool for improving survey research by enabling a systematic evaluation of question design. It can predict the reliability, validity, and quality of survey items based on their formal and linguistic characteristics. This capability is invaluable for researchers looking to enhance their measurement instruments. By linking these characteristics to measurement quality, SQP provides actionable insights for creating better questionnaires, supports quality control in survey research, and helps reduce potential biases when measuring subjective concepts such as attitudes and opinions. 
+
+
+Despite its advantages, SQP has some limitations. Its dependence on user coding can introduce subjectivity in interpreting the characteristics of survey questions. While the platform provides authorized codings for numerous survey questions and offers detailed guidance to minimize this risk, the quality of predictions can still vary depending on the user’s expertise. Additionally, the coding process—which requires assessing up to 60 characteristics for each item—can be time-consuming for those unfamiliar with the tool. Furthermore, although SQP’s database is extensive, it is not exhaustive, and the quality of predictions may not fully capture the nuances of all survey contexts or emerging methodologies. 
+
+
+Looking ahead, the potential for SQP’s development is promising. Expanding the database to include more languages, regions, and survey design choices would enhance its applicability, particularly in underrepresented contexts. Incorporating large language models to automate parts of the coding process could alleviate the cognitive load on users and improve consistency. Additionally, integrating SQP with newer survey methodologies and adaptive designs, along with continuously updating its algorithm to reflect advancements in survey research, will help maintain its relevance in a rapidly evolving field. By addressing these challenges and embracing innovation, SQP can continue to be an indispensable tool for survey researchers around the world. 
+
