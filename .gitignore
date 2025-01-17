@@ -2,12 +2,14 @@
 .Rproj.user/
 .RData
 .Rhistory
+.github/workflows
 
 # Quarto related files
 .quarto/
 tool_valitext.html
 
 # Other project specific files
-tool_valitext.Rproj
+tool_sqp.Rproj
 tool_valitext_files/
 /.quarto/
+index.html
