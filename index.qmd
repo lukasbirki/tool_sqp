@@ -2,8 +2,8 @@
 title: "Survey Quality Predictor"
 subtitle: "A survey quality prediction system for continuous questions used in survey research"
 author:
-  - name: "Lukas Birkenmaier"
   - name: "Lydia Repke"
+  - name: "Lukas Birkenmaier"
   - name: "Cem Eryar"
 image: img/logo_sqp.png 
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
@@ -74,7 +74,7 @@ The decisions made in designing survey questions significantly impact respondent
 ##### **Numeric scale (0–10):** 
 | Very dissatisfied |         |         |        |      |        |       |        |        |         | Very satisfied |
 |--------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|----------------|
-|         0         |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |        10       |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0       |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |        10       |
 
 :::
 
@@ -157,11 +157,10 @@ To illustrate how measuring the same construct can vary depending on the type of
 - The second version “HS19 / testc19 / Political satisfaction: country's economy” measures the same construct using a 5-point Likert scale with fully labeled response options. The question states, “To what extent do you agree or disagree with the following statement: On the whole, I am satisfied with the present state of the economy in (Britain/the UK).” Here, response options range from “1 - Agree strongly” to “5 - Disagree strongly,” categorizing responses into distinct levels of agreement or disagreement. 
 
 ![](img/domain.png){style="margin-top: 20px; margin-bottom: 10px;"}
-Using SQP, both survey items were coded to capture their design characteristics, revealing notable differences. Shared attributes included the domain, classified as “National Politics,” and the concept of “Feeling,” specifically focusing on satisfaction with the economy. However, variations emerged in other areas. The numeric scale question was coded as using a symmetric, theoretically bipolar scale with partially labeled categories, emphasizing both extremes and intermediate values. In contrast, the Likert scale question was coded as having fully labeled categories, a balanced structure, and an indirect request format. Additional differences included the presence of encouragement to respond in the Likert scale version, which was absent in the numeric scale question. These distinctions, highlighted in the coding interface, reflect design nuances that can influence respondents’ interpretations and responses. 
+Using SQP, both survey items were coded to capture their design characteristics, revealing notable differences. Shared attributes included the domain, classified as “National Politics,” and the concept of “Feeling,” specifically focusing on satisfaction with the economy. However, variations emerged in other areas. The numeric scale question was coded as using a symmetric, theoretically bipolar scale with partially labeled categories, emphasizing both extremes and intermediate values. In contrast, the Likert scale question was coded as having fully labeled categories, a balanced structure, and an indirect request format. Additional differences included the presence of encouragement to respond in the Likert scale version, which was absent in the numeric scale question. These distinctions, highlighted in the coding interface in blue, reflect design nuances that can influence respondents’ interpretations and responses. 
 
 ![](img/rating.png){style="margin-top: 20px; margin-bottom: 10px;"} 
-SQP generated quality predictions for both types of questions, highlighting the impact of various design choices. The numeric rating scale question achieved a reliability score of *0.811* and a validity score of *0.829*, resulting in an overall quality score of *0.673*. In contrast, the 5-point Likert scale question received a reliability score of *0.667* and a validity score of *0.826*, yielding an overall quality score of *0.826*. These results emphasize that the Likert scale question, despite its lower reliability, benefits from higher validity, which contributes to its superior overall quality score. The findings illustrate the importance of aligning question design with research objectives to optimize data quality. 
-
+SQP generated quality predictions for both types of questions, highlighting the impact of various design choices. The numeric rating scale question achieved a reliability score of 0.811 and a validity score of *0.829*, resulting in an overall quality score of *0.673*. In contrast, the 5-point Likert scale question received a reliability score of *0.667* and a validity score of *0.826*, leading to an overall quality score of *0.552*. These results demonstrate that while both scales have similar validity scores, their reliability scores differ significantly, resulting in better overall quality for the 11-point scale. This comparison underscores the importance of aligning question design with research objectives to optimize data quality.
 
 
 :::{.callout-note collapse="true" title="A Step-by-Step Guide to Hands-on Application"}
